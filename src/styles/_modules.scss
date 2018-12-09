@@ -1,0 +1,23 @@
+@mixin flexCenter {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin backImgCenter {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@mixin aspect($ratio) {
+  &:after {
+    content: '';
+    display: block;
+    padding-top: $ratio;
+  }
+}
+
+@mixin overflow() {
+  overflow: auto;
+  -ms-overflow-style: none;
+}

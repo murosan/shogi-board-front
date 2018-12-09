@@ -1,5 +1,17 @@
+@import '../styles/paths';
+@import '../styles/modules';
+
 .App {
-  display: flex;
-  flex-direction: column;
-  color: rgb(23, 18, 83);
+  @include backImgCenter;
+  padding: 1em;
+  background-image: url($ImgComponentsPath+'/tatami.jpg');
+  display: grid;
+}
+
+.App-BoardOnly {
+  grid-template-columns: 1fr;
+}
+
+.App-SideInfo {
+  grid-template-columns: 5fr 2fr;
 }

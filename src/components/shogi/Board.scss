@@ -1,4 +1,9 @@
+@import '../../styles/paths';
+@import '../../styles/modules';
+
 .Board {
+  @include backImgCenter;
   display: grid;
-  border: 1px solid blue;
+  height: 400px;
+  background-image: url($ImgComponentsPath+'/board.png');
 }

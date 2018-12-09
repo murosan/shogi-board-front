@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Board from './shogi/Board'
+import BoardArea from './shogi/BoardArea'
 import './App.scss'
 
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Board />
+      <div className="App App-BoardOnly">
+        <BoardArea />
       </div>
     )
   }
