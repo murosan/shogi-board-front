@@ -9,15 +9,18 @@
   background-position: center center;
 }
 
-@mixin aspect($ratio) {
-  &:after {
+@mixin aspect($value) {
+  &::after {
     content: '';
     display: block;
-    padding-top: $ratio;
+    padding-top: $value;
   }
 }
 
-@mixin overflow() {
+@mixin overflow {
   overflow: auto;
   -ms-overflow-style: none;
+  &:-webkit-scrollbar {
+    display: none;
+  }
 }

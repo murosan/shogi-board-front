@@ -1,0 +1,15 @@
+@import '../../styles/paths';
+@import '../../styles/modules';
+
+.Captures {
+  @include backImgCenter;
+  border-radius: 0.5vw;
+}
+
+.Captures0 {
+  background-image: url($ImgComponentsPath+'/cap_stand0.png');
+}
+
+.Captures1 {
+  background-image: url($ImgComponentsPath+'/cap_stand1.png');
+}

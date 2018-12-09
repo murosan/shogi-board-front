@@ -1,0 +1,29 @@
+$borderColor: rgb(0, 0, 0);
+$borderWidth: 0.18vw;
+
+.Piece {
+  border-bottom: $borderWidth solid $borderColor;
+  border-right: $borderWidth solid $borderColor;
+}
+
+.Piece-left {
+  border-left: $borderWidth solid $borderColor;
+}
+
+.Piece-top {
+  border-top: $borderWidth solid $borderColor;
+}
+
+.Piece-star {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    right: -0.57vw;
+    bottom: -0.57vw;
+    height: 1vw;
+    width: 1vw;
+    border-radius: 50%;
+    background-color: black;
+  }
+}

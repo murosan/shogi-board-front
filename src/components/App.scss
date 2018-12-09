@@ -3,9 +3,10 @@
 
 .App {
   @include backImgCenter;
-  padding: 1em;
-  background-image: url($ImgComponentsPath+'/tatami.jpg');
   display: grid;
+  padding: 1em;
+  min-width: 650px;
+  background-image: url($ImgComponentsPath+'/tatami.jpg');
 }
 
 .App-BoardOnly {
