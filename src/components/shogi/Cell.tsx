@@ -1,60 +1,79 @@
 import React, { Component } from 'react'
 import './Cell.scss'
+import { Piece } from '../../model/shogi/Piece'
 import { columnString, rowString } from '../../lib/strings'
 
 export interface Props {
   row: number
-  colum: number
+  column: number
+  isReversed: boolean
+  piece: Piece | undefined
 }
 
 export default class Cell extends Component<Props, {}> {
-  render() {
-    const rowText = isEdgeTextRow(this.props.row, this.props.colum) ? (
-      <span>{columnString(this.props.colum)}</span>
-    ) : (
-      undefined
+  render(): JSX.Element {
+    const className: string = getClassName(
+      this.props.row,
+      this.props.column,
+      this.props.isReversed
     )
-    const columnText = isEdgeTextColumn(this.props.row, this.props.colum) ? (
-      <span>{rowString(this.props.row)}</span>
-    ) : (
-      undefined
-    )
-    const className = getClassName(this.props.row, this.props.colum)
     return (
       <div className={className}>
-        {rowText}
-        {columnText}
+        {this.EdgeTextRow()}
+        {this.EdgeTextColumn()}
       </div>
     )
   }
+
+  EdgeTextRow(): JSX.Element | undefined {
+    const needText = inRange(this.props.column) && this.props.row === -1
+    if (!needText) {
+      return undefined
+    }
+    return <span>{columnString(this.props.column)}</span>
+  }
+
+  EdgeTextColumn(): JSX.Element | undefined {
+    const needText = inRange(this.props.row) && this.props.column === -1
+    if (!needText) {
+      return undefined
+    }
+    return <span>{rowString(this.props.row)}</span>
+  }
 }
 
-function getClassName(row: number, column: number): string {
-  const piece = inRange(row) && inRange(column) ? 'Piece ' : ''
-  const left = column === 0 && inRange(row) ? 'Piece-Left ' : ''
-  const top = row === 0 && inRange(column) ? 'Piece-Top ' : ''
-  const edgeText =
-    isEdgeTextRow(row, column) || isEdgeTextColumn(row, column)
-      ? 'Cell-EdgeText '
-      : ''
-  const star =
-    (row === 2 && column === 2) ||
-    (row === 2 && column === 5) ||
-    (row === 5 && column === 2) ||
-    (row === 5 && column === 5)
-      ? 'Piece-Star '
-      : ''
+/**
+ * クラス名を取得する
+ * @param r number row
+ * @param c number column
+ * @param rv boolean isReversed
+ */
+function getClassName(r: number, c: number, rv: boolean): string {
+  const rowInRange: boolean = inRange(r)
+  const colInRange: boolean = inRange(c)
+  const isLeft: boolean = rowInRange && ((!rv && c === 8) || (rv && c === 0))
+  const isTop: boolean = colInRange && ((!rv && r === 0) || (rv && r === 8))
+  const isStar: boolean =
+    (!rv &&
+      ((r === 2 && c === 6) ||
+        (r === 2 && c === 3) ||
+        (r === 5 && c === 6) ||
+        (r === 5 && c === 3))) ||
+    (rv &&
+      ((r === 6 && c === 2) ||
+        (r === 6 && c === 5) ||
+        (r === 3 && c === 2) ||
+        (r === 3 && c === 5)))
+
+  const piece: string = rowInRange && colInRange ? 'Piece ' : ''
+  const left: string = isLeft ? 'Piece-Left ' : ''
+  const top: string = isTop ? 'Piece-Top ' : ''
+  const edgeText: string =
+    (c === -1 && rowInRange) || (r === -1 && colInRange) ? 'Cell-EdgeText ' : ''
+  const star: string = isStar ? 'Piece-Star ' : ''
   return ('Cell ' + piece + left + top + edgeText + star).trim()
 }
 
-function isEdgeTextRow(row: number, column: number): boolean {
-  return row === -1 && inRange(column)
-}
-
-function isEdgeTextColumn(row: number, column: number): boolean {
-  return column === 9 && inRange(row)
-}
-
 function inRange(n: number): boolean {
-  return n >= 0 && n <= 8
+  return 0 <= n && n <= 8
 }

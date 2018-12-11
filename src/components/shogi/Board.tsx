@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './Board.scss'
 import Cell from './Cell'
 import GameState from '../../model/shogi/GameState'
+import { Piece } from '../../model/shogi/Piece'
+import Position from '../../model/shogi/Position'
 
 export interface Props {
   gs: GameState
@@ -9,9 +11,25 @@ export interface Props {
 
 export default class Board extends Component<Props, {}> {
   render() {
-    const indexArr = [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    const rows = indexArr.map(r =>
-      indexArr.map(c => <Cell key={`cell:${r}${c}`} row={r} colum={c} />)
+    const idx = this.props.gs.indexes
+    const rows = idx.map(r =>
+      idx
+        .slice()
+        .reverse()
+        .map(c => {
+          const p: Piece | undefined = inRange(r, c)
+            ? this.props.gs.pos.pos[r][c]
+            : undefined
+          return (
+            <Cell
+              key={`cell:${r}${c}`}
+              row={r}
+              column={c}
+              isReversed={idx[0] === 9}
+              piece={p}
+            />
+          )
+        })
     )
     return (
       <div className="BoardContainer">
@@ -19,4 +37,8 @@ export default class Board extends Component<Props, {}> {
       </div>
     )
   }
+}
+
+function inRange(row: number, colum: number): boolean {
+  return 0 <= row && row <= 8 && 0 <= colum && colum <= 8
 }

@@ -14,7 +14,9 @@ export interface State {
 export default class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
-    this.state = props
+    this.state = {
+      gs: props.gs,
+    }
   }
 
   render() {
