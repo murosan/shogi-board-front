@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
+import GameState from './model/shogi/GameState'
+import { init } from './model/shogi/GameStateInit'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const gs: GameState = init()
+
+ReactDOM.render(<App gs={gs} />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

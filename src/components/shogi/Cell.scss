@@ -2,7 +2,7 @@
 @import '../../styles/modules';
 
 $borderColor: rgb(0, 0, 0);
-$borderWidth: 0.18vw;
+$borderWidth: 0.15vw;
 
 .Piece {
   border-bottom: $borderWidth solid $borderColor;
@@ -20,12 +20,14 @@ $borderWidth: 0.18vw;
 .Piece-Star {
   position: relative;
   &::before {
+    $pos: -0.5vw;
+    $width: 0.75vw;
     content: '';
     position: absolute;
-    right: -0.57vw;
-    bottom: -0.57vw;
-    height: 1vw;
-    width: 1vw;
+    right: $pos;
+    bottom: $pos;
+    height: $width;
+    width: $width;
     border-radius: 50%;
     background-color: $borderColor;
   }

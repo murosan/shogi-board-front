@@ -1,4 +1,5 @@
 import { Piece } from './Piece'
+import { Turn } from './Turn'
 
 export type Row = [
   Piece,
@@ -24,7 +25,7 @@ export default interface Position {
   cap1: Captures
 
   // 0 先手番、1 後手番
-  turn: 0 | 1
+  turn: Turn
 
   // 手数
   moveCount: number

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Captures from './Captures'
 import './LeftSide.scss'
+import Captures from './Captures'
 
 export default class LeftSide extends Component {
   render() {

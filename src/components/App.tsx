@@ -1,12 +1,26 @@
 import React, { Component } from 'react'
-import BoardArea from './shogi/BoardArea'
 import './App.scss'
+import BoardArea from './shogi/BoardArea'
+import GameState from '../model/shogi/GameState'
 
-export default class App extends Component {
+export interface Props {
+  gs: GameState
+}
+
+export interface State {
+  gs: GameState
+}
+
+export default class App extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props)
+    this.state = props
+  }
+
   render() {
     return (
       <div className="App App-BoardOnly">
-        <BoardArea />
+        <BoardArea gs={this.state.gs} />
       </div>
     )
   }
