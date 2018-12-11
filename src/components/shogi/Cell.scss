@@ -3,6 +3,7 @@
 
 $borderColor: rgb(0, 0, 0);
 $borderWidth: 0.15vw;
+$edgeTextSize: 1.2vw;
 
 .Piece {
   border-bottom: $borderWidth solid $borderColor;
@@ -37,6 +38,6 @@ $borderWidth: 0.15vw;
   @include flexCenter;
 
   span {
-    font-size: 1.2vw;
+    font-size: $edgeTextSize;
   }
 }
