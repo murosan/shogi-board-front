@@ -25,6 +25,7 @@ $captureAspectValue: 109%;
 .Captures-Inner {
   position: relative;
   padding-top: 0.1em;
+  overflow: hidden;
 
   div {
     position: absolute;
@@ -87,10 +88,8 @@ $piecePositionMap: (
     @return 10%;
   } @else if $count == 2 {
     @return $nth * 25% - 25%;
-  } @else if $count == 3 {
-    @return $nth * 12% - 10%;
   } @else {
-    @return $nth * 9% - 9%;
+    @return $nth * 10% - 15%;
   }
 }
 

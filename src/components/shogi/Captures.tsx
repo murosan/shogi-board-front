@@ -14,6 +14,8 @@ import {
 export interface Props {
   isLeftSide: boolean
   captures: number[]
+  isTurn: boolean
+  selected?: number[]
 }
 
 export default class Captures extends Component<Props, {}> {
@@ -32,12 +34,33 @@ export default class Captures extends Component<Props, {}> {
   }
 
   cells(name: string, pieceId: Piece, count: number): JSX.Element {
-    const children = Array.from(Array(count).keys()).map(i => (
-      <div
-        key={`Cap-${this.props.isLeftSide}-${name}-${i}`}
-        className={`Piece Piece-${pieceId} Capture-${pieceId}${count}${i + 1}`}
-      />
-    ))
+    const sel: number[] = this.props.selected || []
+    const children = Array.from(Array(count).keys()).map(i => {
+      const selectedClass = this.props.isTurn
+        ? getSelectedClass(sel, pieceId, i)
+        : ''
+      const captureClass = `Capture-${pieceId}${count}${i + 1}`
+      const className = `Piece Piece-${pieceId} ${selectedClass} ${captureClass}`
+      return (
+        <div
+          key={`Cap-${this.props.isLeftSide}-${name}-${i}`}
+          className={className}
+        />
+      )
+    })
     return <div className={`Captures-Inner Captures-${name}`}>{children}</div>
   }
+}
+
+function getSelectedClass(
+  selected: number[],
+  pieceId: Piece,
+  index: number
+): string {
+  return selected.length === 4 &&
+    selected[0] === -1 &&
+    selected[2] === pieceId &&
+    selected[3] === index
+    ? 'Piece-Selected'
+    : ''
 }

@@ -25,6 +25,10 @@ $edgeTextSize: 1.2vw;
   }
 }
 
+.Piece-Selected {
+  background-color: $GreenSelected;
+}
+
 .Piece-Left {
   border-left: $borderWidth solid $borderColor;
 }

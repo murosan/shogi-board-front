@@ -12,8 +12,10 @@ export default interface GameState {
   // -1 と 9 はEdge部分。0-8が駒が置かれる9*9の盤面。
   indexes: number[]
 
-  // 選択された駒の位置を入れる
-  // [row, column] で指定
+  // 選択された駒の情報を入れる
+  // [row, column, Piece] で指定
+  // 持ち駒が選択されていたら、
+  // [-1, -1, Piece, 何番目か] で指定
   // undefined なら選択なしの状態
   selected: number[] | undefined
 
