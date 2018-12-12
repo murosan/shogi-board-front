@@ -1,11 +1,13 @@
 @import '../../styles/paths';
 @import '../../styles/modules';
+@import '../../styles/pieces';
 
 $borderColor: rgb(0, 0, 0);
 $borderWidth: 0.15vw;
 $edgeTextSize: 1.2vw;
 
 .Piece {
+  @include backImgCenter;
   border-bottom: $borderWidth solid $borderColor;
   border-right: $borderWidth solid $borderColor;
 }
