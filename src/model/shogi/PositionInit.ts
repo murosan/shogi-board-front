@@ -40,7 +40,7 @@ export function hirate(): Position {
     ],
     cap0: [0, 0, 0, 0, 0, 0, 0],
     cap1: [0, 0, 0, 0, 0, 0, 0],
-    turn: 0,
+    turn: 1,
     moveCount: 0,
   }
 }

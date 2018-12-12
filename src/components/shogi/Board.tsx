@@ -3,7 +3,6 @@ import './Board.scss'
 import Cell from './Cell'
 import GameState from '../../model/shogi/GameState'
 import { Piece } from '../../model/shogi/Piece'
-import Position from '../../model/shogi/Position'
 
 export interface Props {
   gs: GameState
@@ -20,13 +19,15 @@ export default class Board extends Component<Props, {}> {
           const p: Piece | undefined = inRange(r, c)
             ? this.props.gs.pos.pos[r][c]
             : undefined
+          const isTurn: boolean = !!(p && isOwner(this.props.gs.pos.turn, p))
           return (
             <Cell
               key={`cell:${r}${c}`}
               row={r}
               column={c}
-              isReversed={idx[0] === 9}
               piece={p}
+              isReversed={idx[0] === 9}
+              isTurn={isTurn}
             />
           )
         })
@@ -41,4 +42,8 @@ export default class Board extends Component<Props, {}> {
 
 function inRange(row: number, colum: number): boolean {
   return 0 <= row && row <= 8 && 0 <= colum && colum <= 8
+}
+
+function isOwner(turn: 1 | -1, p: Piece): boolean {
+  return (p > 0 && turn === 1) || (p < 0 && turn === -1)
 }

@@ -11,8 +11,9 @@ export default interface Position {
   // 後手の持ち駒[歩の枚数, 香の枚数, 桂, 銀, 金, 角, 飛]
   cap1: number[]
 
-  // 0 先手番、1 後手番
-  turn: Turn
+  //  1: 先手番
+  // -1: 後手番
+  turn: 1 | -1
 
   // 手数
   moveCount: number

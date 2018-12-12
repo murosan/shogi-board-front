@@ -6,8 +6,9 @@ import { columnString, rowString } from '../../lib/strings'
 export interface Props {
   row: number
   column: number
-  isReversed: boolean
   piece: Piece | undefined
+  isReversed: boolean
+  isTurn: boolean
 }
 
 export default class Cell extends Component<Props, {}> {
@@ -16,6 +17,7 @@ export default class Cell extends Component<Props, {}> {
       this.props.row,
       this.props.column,
       this.props.isReversed,
+      this.props.isTurn,
       this.props.piece
     )
     return (
@@ -47,10 +49,17 @@ export default class Cell extends Component<Props, {}> {
  * クラス名を取得する
  * @param r number row
  * @param c number column
- * @param p Piece | undefined
  * @param rv boolean isReversed
+ * @param isTurn boolean 手番側の駒か
+ * @param p Piece | undefined
  */
-function getClassName(r: number, c: number, rv: boolean, p?: Piece): string {
+function getClassName(
+  r: number,
+  c: number,
+  rv: boolean,
+  isTurn: boolean,
+  p?: Piece
+): string {
   const rowInRange: boolean = inRange(r)
   const colInRange: boolean = inRange(c)
   const isLeft: boolean = rowInRange && ((!rv && c === 8) || (rv && c === 0))
@@ -70,12 +79,14 @@ function getClassName(r: number, c: number, rv: boolean, p?: Piece): string {
   const piece: string = rowInRange && colInRange ? 'Piece ' : ''
   const rvp: number | undefined = p && rv ? p * -1 : p
   const pieceImg: string = rvp ? `Piece-${rvp} ` : ''
+  const pieceTurn: string = isTurn ? 'Piece-Turn ' : ''
   const left: string = isLeft ? 'Piece-Left ' : ''
   const top: string = isTop ? 'Piece-Top ' : ''
   const edgeText: string =
     (c === -1 && rowInRange) || (r === -1 && colInRange) ? 'Cell-EdgeText ' : ''
   const star: string = isStar ? 'Piece-Star ' : ''
-  return ('Cell ' + piece + pieceImg + left + top + edgeText + star).trim()
+
+  return `Cell ${piece}${pieceImg}${pieceTurn}${left}${top}${edgeText}${star}`.trim()
 }
 
 function inRange(n: number): boolean {

@@ -1,3 +1,4 @@
+@import '../../styles/colors';
 @import '../../styles/paths';
 @import '../../styles/modules';
 @import '../../styles/pieces';
@@ -10,6 +11,15 @@ $edgeTextSize: 1.2vw;
   @include backImgCenter;
   border-bottom: $borderWidth solid $borderColor;
   border-right: $borderWidth solid $borderColor;
+}
+
+.Piece-Turn {
+  &:hover {
+    background-color: $GreenHover;
+  }
+  &:active {
+    background-color: $GreenSelected;
+  }
 }
 
 .Piece-Left {
