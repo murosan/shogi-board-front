@@ -9,6 +9,9 @@ $edgeTextSize: 1.2vw;
 
 .Piece {
   @include backImgCenter;
+}
+
+.Piece-Bordered {
   border-bottom: $borderWidth solid $borderColor;
   border-right: $borderWidth solid $borderColor;
 }

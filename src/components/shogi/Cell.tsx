@@ -76,7 +76,7 @@ function getClassName(
         (r === 3 && c === 2) ||
         (r === 3 && c === 5)))
 
-  const piece: string = rowInRange && colInRange ? 'Piece ' : ''
+  const piece: string = rowInRange && colInRange ? 'Piece Piece-Bordered ' : ''
   const rvp: number | undefined = p && rv ? p * -1 : p
   const pieceImg: string = rvp ? `Piece-${rvp} ` : ''
   const pieceTurn: string = isTurn ? 'Piece-Turn ' : ''
