@@ -28,6 +28,7 @@ export default class Board extends Component<Props, {}> {
               piece={p}
               isReversed={idx[0] === 9}
               isTurn={isTurn}
+              selected={this.props.gs.selected}
             />
           )
         })
