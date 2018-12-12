@@ -35,7 +35,7 @@ export default class Cell extends Component<Props, {}> {
   }
 
   EdgeTextColumn(): JSX.Element | undefined {
-    const needText = inRange(this.props.row) && this.props.column === 9
+    const needText = inRange(this.props.row) && this.props.column === -1
     if (!needText) {
       return undefined
     }
@@ -53,26 +53,27 @@ export default class Cell extends Component<Props, {}> {
 function getClassName(r: number, c: number, rv: boolean, p?: Piece): string {
   const rowInRange: boolean = inRange(r)
   const colInRange: boolean = inRange(c)
-  const isLeft: boolean = rowInRange && ((!rv && c === 0) || (rv && c === 8))
+  const isLeft: boolean = rowInRange && ((!rv && c === 8) || (rv && c === 0))
   const isTop: boolean = colInRange && ((!rv && r === 0) || (rv && r === 8))
   const isStar: boolean =
     (!rv &&
-      ((r === 2 && c === 5) ||
-        (r === 2 && c === 2) ||
-        (r === 5 && c === 5) ||
-        (r === 5 && c === 2))) ||
+      ((r === 2 && c === 6) ||
+        (r === 2 && c === 3) ||
+        (r === 5 && c === 6) ||
+        (r === 5 && c === 3))) ||
     (rv &&
-      ((r === 6 && c === 3) ||
-        (r === 6 && c === 6) ||
-        (r === 3 && c === 3) ||
-        (r === 3 && c === 6)))
+      ((r === 6 && c === 2) ||
+        (r === 6 && c === 5) ||
+        (r === 3 && c === 2) ||
+        (r === 3 && c === 5)))
 
   const piece: string = rowInRange && colInRange ? 'Piece ' : ''
-  const pieceImg: string = p ? `Piece-${p} ` : ''
+  const rvp: number | undefined = p && rv ? p * -1 : p
+  const pieceImg: string = rvp ? `Piece-${rvp} ` : ''
   const left: string = isLeft ? 'Piece-Left ' : ''
   const top: string = isTop ? 'Piece-Top ' : ''
   const edgeText: string =
-    (c === 9 && rowInRange) || (r === -1 && colInRange) ? 'Cell-EdgeText ' : ''
+    (c === -1 && rowInRange) || (r === -1 && colInRange) ? 'Cell-EdgeText ' : ''
   const star: string = isStar ? 'Piece-Star ' : ''
   return ('Cell ' + piece + pieceImg + left + top + edgeText + star).trim()
 }

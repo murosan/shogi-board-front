@@ -21,18 +21,21 @@ import {
 
 /**
  * 初期局を返す
+ * column は reverse() されているので、
+ * 飛車と角の位置が逆に見える
+ * 棋譜との互換性を保つため。３三角 → pos[2][2] という感じで変換が楽
  */
 export function hirate(): Position {
   return {
     pos: [
       [Kyou1, Kei1, Gin1, Kin1, Gyoku1, Kin1, Gin1, Kei1, Kyou1],
-      [Empty, Hisha1, Empty, Empty, Empty, Empty, Empty, Kaku1, Empty],
+      [Empty, Kaku1, Empty, Empty, Empty, Empty, Empty, Hisha1, Empty],
       [Fu1, Fu1, Fu1, Fu1, Fu1, Fu1, Fu1, Fu1, Fu1],
       [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty],
       [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty],
       [Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty, Empty],
       [Fu0, Fu0, Fu0, Fu0, Fu0, Fu0, Fu0, Fu0, Fu0],
-      [Empty, Kaku0, Empty, Empty, Empty, Empty, Empty, Hisha0, Empty],
+      [Empty, Hisha0, Empty, Empty, Empty, Empty, Empty, Kaku0, Empty],
       [Kyou0, Kei0, Gin0, Kin0, Gyoku0, Kin0, Gin0, Kei0, Kyou0],
     ],
     cap0: [0, 0, 0, 0, 0, 0, 0],
