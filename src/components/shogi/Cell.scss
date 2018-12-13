@@ -43,16 +43,15 @@ $edgeTextSize: 1.2vw;
 .Piece-Star {
   position: relative;
   &::before {
-    $pos: -0.5vw;
-    $width: 0.75vw;
+    $pos: $borderWidth * -2.5;
+    $width: $borderWidth * 5;
     content: '';
     position: absolute;
     right: $pos;
     bottom: $pos;
     height: $width;
     width: $width;
-    border-radius: 50%;
-    background-color: $borderColor;
+    @include backgroundCircle;
   }
 }
 
