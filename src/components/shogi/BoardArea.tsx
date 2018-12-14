@@ -4,9 +4,11 @@ import Board from './Board'
 import LeftSide from './LeftSide'
 import RightSide from './RightSide'
 import GameState from '../../model/shogi/GameState'
+import { ClickFunc } from '../../model/events/ClickFunc'
 
 export interface Props {
   gs: GameState
+  click: ClickFunc
 }
 
 export default class BoardArea extends Component<Props, {}> {
@@ -20,12 +22,14 @@ export default class BoardArea extends Component<Props, {}> {
     return (
       <div className="BoardArea">
         <LeftSide
+          click={this.props.click}
           captures={isReversed ? cap0 : cap1}
           isTurn={isReversed ? turn === 1 : turn === -1}
           selected={this.props.gs.selected}
         />
-        <Board gs={this.props.gs} />
+        <Board gs={this.props.gs} click={this.props.click} />
         <RightSide
+          click={this.props.click}
           captures={isReversed ? cap1 : cap0}
           isTurn={isReversed ? turn === -1 : turn === 1}
           selected={this.props.gs.selected}

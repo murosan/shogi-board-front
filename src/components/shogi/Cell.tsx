@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Cell.scss'
 import { Piece } from '../../model/shogi/Piece'
 import { columnString, rowString } from '../../lib/strings'
+import { ClickFunc, ClickProps } from '../../model/events/ClickFunc'
 
 export interface Props {
   row: number
@@ -10,6 +11,7 @@ export interface Props {
   isReversed: boolean
   isTurn: boolean
   selected: number[] | undefined
+  click: ClickFunc
 }
 
 export default class Cell extends Component<Props, {}> {
@@ -23,14 +25,14 @@ export default class Cell extends Component<Props, {}> {
       this.props.piece
     )
     return (
-      <div className={className}>
-        {this.EdgeTextRow()}
-        {this.EdgeTextColumn()}
+      <div className={className} onClick={() => this.click()}>
+        {this.renderEdgeTextRow()}
+        {this.renderEdgeTextColumn()}
       </div>
     )
   }
 
-  EdgeTextRow(): JSX.Element | undefined {
+  renderEdgeTextRow(): JSX.Element | undefined {
     const needText = inRange(this.props.column) && this.props.row === -1
     if (!needText) {
       return undefined
@@ -38,12 +40,23 @@ export default class Cell extends Component<Props, {}> {
     return <span>{columnString(this.props.column)}</span>
   }
 
-  EdgeTextColumn(): JSX.Element | undefined {
+  renderEdgeTextColumn(): JSX.Element | undefined {
     const needText = inRange(this.props.row) && this.props.column === -1
     if (!needText) {
       return undefined
     }
     return <span>{rowString(this.props.row)}</span>
+  }
+
+  click() {
+    if (this.props.piece !== undefined) {
+      const p: ClickProps = {
+        clicked: this.props.piece,
+        row: this.props.row,
+        column: this.props.column,
+      }
+      this.props.click(p)
+    }
   }
 }
 
@@ -79,7 +92,7 @@ function getClassName(
         (r === 6 && c === 5) ||
         (r === 3 && c === 2) ||
         (r === 3 && c === 5)))
-  const isSelected: boolean = sel.length === 3 && sel[0] === r && sel[1] === c
+  const isSelected: boolean = sel.length === 4 && sel[0] === r && sel[1] === c
 
   const piece: string = rowInRange && colInRange ? 'Piece Piece-Bordered ' : ''
   const rvp: number | undefined = p && rv ? p * -1 : p

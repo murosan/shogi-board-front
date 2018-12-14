@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import './LeftSide.scss'
 import Captures from './Captures'
+import { ClickFunc } from '../../model/events/ClickFunc'
 
 export interface Props {
+  click: ClickFunc
   captures: number[]
   isTurn: boolean
   selected?: number[]

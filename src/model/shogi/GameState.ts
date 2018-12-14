@@ -1,5 +1,5 @@
 import Position from './Position'
-import { Piece } from './Piece'
+import Confirm from './Confirm'
 
 export default interface GameState {
   pos: Position
@@ -13,7 +13,7 @@ export default interface GameState {
   indexes: number[]
 
   // 選択された駒の情報を入れる
-  // [row, column, Piece] で指定
+  // [row, column, Piece, 0] で指定
   // 持ち駒が選択されていたら、
   // [-1, -1, Piece, 何番目か] で指定
   // undefined なら選択なしの状態
@@ -22,5 +22,5 @@ export default interface GameState {
   // 成・不成 を選択する画面の状態
   // [成の場合のPiece, 不成の場合のPiece]
   // undefined なら選択画面ではない
-  confirm: Piece[] | undefined
+  confirm: Confirm | undefined
 }

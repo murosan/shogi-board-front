@@ -3,9 +3,11 @@ import './Board.scss'
 import Cell from './Cell'
 import GameState from '../../model/shogi/GameState'
 import { Piece } from '../../model/shogi/Piece'
+import { ClickFunc } from '../../model/events/ClickFunc'
 
 export interface Props {
   gs: GameState
+  click: ClickFunc
 }
 
 export default class Board extends Component<Props, {}> {
@@ -29,6 +31,7 @@ export default class Board extends Component<Props, {}> {
               isReversed={idx[0] === 9}
               isTurn={isTurn}
               selected={this.props.gs.selected}
+              click={this.props.click}
             />
           )
         })
