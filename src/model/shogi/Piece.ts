@@ -14,8 +14,8 @@ export const To0: Piece = 11
 export const NariKyou0: Piece = 12
 export const NariKei0: Piece = 13
 export const NariGin0: Piece = 14
-export const Uma0: Piece = 15
-export const Ryu0: Piece = 16
+export const Uma0: Piece = 16
+export const Ryu0: Piece = 17
 
 export const Fu1: Piece = -Fu0
 export const Kyou1: Piece = -Kyou0

@@ -43,8 +43,8 @@ $edgeTextSize: 1.2vw;
 .Piece-Star {
   position: relative;
   &::before {
-    $pos: $borderWidth * -2.5;
-    $width: $borderWidth * 5;
+    $pos: $borderWidth * -3;
+    $width: $borderWidth * 6;
     content: '';
     position: absolute;
     right: $pos;
@@ -57,6 +57,7 @@ $edgeTextSize: 1.2vw;
 
 .Cell-EdgeText {
   @include flexCenter;
+  pointer-events: none;
 
   span {
     font-size: $edgeTextSize;
