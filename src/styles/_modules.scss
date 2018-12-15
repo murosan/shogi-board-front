@@ -15,7 +15,7 @@
 // 円の画像
 @mixin backgroundCircle {
   @include backImgCenter;
-  background-image: url('data:image/svg+xml;base64,PHN2ZwogIHZlcnNpb249IjEuMSIKICB3aWR0aD0iMTAiCiAgaGVpZ2h0PSIxMCIKICB4bWw6c3BhY2U9InByZXNlcnZlIgogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIKPgogIDxjaXJjbGUgY3g9IjUiIGN5PSI1IiByPSI1Ij48L2NpcmNsZT4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,PHN2ZwogIHZlcnNpb249IjEuMSIKICB3aWR0aD0iNCIKICBoZWlnaHQ9IjQiCiAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiCj4KICA8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMSI+PC9jaXJjbGU+Cjwvc3ZnPg==');
 }
 
 // 縦横比固定
