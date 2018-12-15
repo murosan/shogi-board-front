@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Cell.scss'
-import Selected from '../../model/shogi/Selected'
+import Point from '../../model/shogi/Point'
 import { Piece } from '../../model/shogi/Piece'
 import { columnString, rowString } from '../../lib/strings'
 import { ClickFunc, ClickProps } from '../../model/events/ClickFunc'
@@ -11,7 +11,7 @@ export interface Props {
   piece: Piece | undefined
   isReversed: boolean
   isTurn: boolean
-  selected: Selected | undefined
+  selected?: Point
   click: ClickFunc
 }
 
@@ -75,7 +75,7 @@ function getClassName(
   c: number,
   rv: boolean,
   isTurn: boolean,
-  sel?: Selected,
+  sel?: Point,
   p?: Piece
 ): string {
   const rowInRange: boolean = inRange(r)

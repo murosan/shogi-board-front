@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Captures.scss'
-import Selected from '../../model/shogi/Selected'
+import Point from '../../model/shogi/Point'
 import { Turn } from '../../model/shogi/Turn'
 import { ClickFunc } from '../../model/events/ClickFunc'
 import {
@@ -20,7 +20,7 @@ export interface Props {
   captures: number[]
   isTurn: boolean
   turn: Turn
-  selected?: Selected
+  selected?: Point
 }
 
 export default class Captures extends Component<Props, {}> {
@@ -68,11 +68,12 @@ export default class Captures extends Component<Props, {}> {
 }
 
 function getSelectedClass(
-  selected: Selected | undefined,
+  selected: Point | undefined,
   pieceId: Piece,
   index: number
 ): string {
   return selected &&
+  selected.piece &&
   selected.row === -1 &&
   selected.column === -1 &&
   Math.abs(selected.piece) === pieceId /* TODO: すげー嫌 */ &&

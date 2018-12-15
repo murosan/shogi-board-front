@@ -3,11 +3,11 @@ import './App.scss'
 import BoardArea from './shogi/BoardArea'
 import GameState from '../model/shogi/GameState'
 import Confirm from '../model/shogi/Confirm'
-import Selected from '../model/shogi/Selected'
 import { Piece } from '../model/shogi/Piece'
 import { Turn } from '../model/shogi/Turn'
 import { ClickProps } from '../model/events/ClickFunc'
 import { move } from '../lib/handler/position'
+import Point from '../model/shogi/Point'
 
 export interface Props {
   gs: GameState
@@ -61,7 +61,7 @@ export default class App extends Component<Props, State> {
     }
 
     // 選択された駒がないとき、手番ではない方の駒or空白マスがクリックされたらなにもしない
-    if (!sel) return
+    if (!sel || !sel.piece) return
 
     // Confirm オブジェクトがクリックされたら動かす(成or不成の処理)
     // Confirm が出てる時はバリデーション済みなはず
@@ -104,7 +104,7 @@ function ownerIsTurn(p: Piece, t: Turn): boolean {
   return (p < 0 && t === -1) || (p > 0 && t === 1)
 }
 
-function selectedAgain(sel: Selected, cp: ClickProps): boolean {
+function selectedAgain(sel: Point, cp: ClickProps): boolean {
   return (
     sel.row === cp.row &&
     sel.column === cp.column &&

@@ -1,6 +1,6 @@
 import Position from './Position'
 import Confirm from './Confirm'
-import Selected from './Selected'
+import Point from './Point'
 
 export default interface GameState {
   pos: Position
@@ -18,7 +18,7 @@ export default interface GameState {
   // 持ち駒が選択されていたら、
   // { -1, -1, Piece, 何番目か } で指定
   // undefined なら選択なしの状態
-  selected: Selected | undefined
+  selected: Point | undefined
 
   // 成・不成 を選択する画面の状態
   // undefined なら選択画面ではない
