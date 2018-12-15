@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Cell.scss'
+import Selected from '../../model/shogi/Selected'
 import { Piece } from '../../model/shogi/Piece'
 import { columnString, rowString } from '../../lib/strings'
 import { ClickFunc, ClickProps } from '../../model/events/ClickFunc'
@@ -10,7 +11,7 @@ export interface Props {
   piece: Piece | undefined
   isReversed: boolean
   isTurn: boolean
-  selected: number[] | undefined
+  selected: Selected | undefined
   click: ClickFunc
 }
 
@@ -21,7 +22,7 @@ export default class Cell extends Component<Props, {}> {
       this.props.column,
       this.props.isReversed,
       this.props.isTurn,
-      this.props.selected || [],
+      this.props.selected,
       this.props.piece
     )
     return (
@@ -66,7 +67,7 @@ export default class Cell extends Component<Props, {}> {
  * @param c number column
  * @param rv boolean isReversed
  * @param isTurn boolean 手番側の駒か
- * @param sel number[]
+ * @param sel Selected | undefined
  * @param p Piece | undefined
  */
 function getClassName(
@@ -74,7 +75,7 @@ function getClassName(
   c: number,
   rv: boolean,
   isTurn: boolean,
-  sel: number[],
+  sel?: Selected,
   p?: Piece
 ): string {
   const rowInRange: boolean = inRange(r)
@@ -92,7 +93,8 @@ function getClassName(
         (r === 6 && c === 5) ||
         (r === 3 && c === 2) ||
         (r === 3 && c === 5)))
-  const isSelected: boolean = sel.length === 4 && sel[0] === r && sel[1] === c
+  const isSelected: boolean =
+    sel !== undefined && sel.row === r && sel.column === c
 
   const piece: string = rowInRange && colInRange ? 'Piece Piece-Bordered ' : ''
   const rvp: number | undefined = p && rv ? p * -1 : p

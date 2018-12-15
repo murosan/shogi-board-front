@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import './RightSide.scss'
 import Captures from './Captures'
+import Selected from '../../model/shogi/Selected'
 import { ClickFunc } from '../../model/events/ClickFunc'
 
 export interface Props {
   click: ClickFunc
   captures: number[]
   isTurn: boolean
-  selected?: number[]
+  selected?: Selected
 }
 
 export default class RightSide extends Component<Props, {}> {

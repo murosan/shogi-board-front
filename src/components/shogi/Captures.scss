@@ -18,6 +18,7 @@ $captureAspectValue: 109%;
   background-image: url($ImgComponentsPath+'/cap_stand.png');
 }
 
+// TODO: 駒の影が逆になってしまった
 .Captures1 {
   transform: rotate(180deg);
 }

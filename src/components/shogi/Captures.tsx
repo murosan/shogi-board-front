@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Captures.scss'
+import Selected from '../../model/shogi/Selected'
 import {
   Fu0,
   Kyou0,
@@ -15,7 +16,7 @@ export interface Props {
   isLeftSide: boolean
   captures: number[]
   isTurn: boolean
-  selected?: number[]
+  selected?: Selected
 }
 
 export default class Captures extends Component<Props, {}> {
@@ -34,7 +35,7 @@ export default class Captures extends Component<Props, {}> {
   }
 
   cells(name: string, pieceId: Piece, count: number): JSX.Element {
-    const sel: number[] = this.props.selected || []
+    const sel = this.props.selected
     const children = Array.from(Array(count).keys()).map(i => {
       const selectedClass = this.props.isTurn
         ? getSelectedClass(sel, pieceId, i)
@@ -53,14 +54,15 @@ export default class Captures extends Component<Props, {}> {
 }
 
 function getSelectedClass(
-  selected: number[],
+  selected: Selected | undefined,
   pieceId: Piece,
   index: number
 ): string {
-  return selected.length === 4 &&
-    selected[0] === -1 &&
-    selected[2] === pieceId &&
-    selected[3] === index
+  return selected &&
+    selected.row === -1 &&
+    selected.column === -1 &&
+    selected.piece === pieceId &&
+    selected.i === index
     ? 'Piece-Selected'
     : ''
 }
