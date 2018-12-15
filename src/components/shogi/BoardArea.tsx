@@ -25,6 +25,7 @@ export default class BoardArea extends Component<Props, {}> {
           click={this.props.click}
           captures={isReversed ? cap0 : cap1}
           isTurn={isReversed ? turn === 1 : turn === -1}
+          turn={this.props.gs.pos.turn}
           selected={this.props.gs.selected}
         />
         <Board gs={this.props.gs} click={this.props.click} />
@@ -32,6 +33,7 @@ export default class BoardArea extends Component<Props, {}> {
           click={this.props.click}
           captures={isReversed ? cap1 : cap0}
           isTurn={isReversed ? turn === -1 : turn === 1}
+          turn={this.props.gs.pos.turn}
           selected={this.props.gs.selected}
         />
       </div>

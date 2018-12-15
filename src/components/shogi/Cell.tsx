@@ -94,7 +94,11 @@ function getClassName(
         (r === 3 && c === 2) ||
         (r === 3 && c === 5)))
   const isSelected: boolean =
-    sel !== undefined && sel.row === r && sel.column === c
+    rowInRange &&
+    colInRange &&
+    sel !== undefined &&
+    sel.row === r &&
+    sel.column === c
 
   const piece: string = rowInRange && colInRange ? 'Piece Piece-Bordered ' : ''
   const rvp: number | undefined = p && rv ? p * -1 : p

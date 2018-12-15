@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Captures.scss'
 import Selected from '../../model/shogi/Selected'
+import { Turn } from '../../model/shogi/Turn'
+import { ClickFunc } from '../../model/events/ClickFunc'
 import {
   Fu0,
   Kyou0,
@@ -13,9 +15,11 @@ import {
 } from '../../model/shogi/Piece'
 
 export interface Props {
+  click: ClickFunc
   isLeftSide: boolean
   captures: number[]
   isTurn: boolean
+  turn: Turn
   selected?: Selected
 }
 
@@ -40,12 +44,22 @@ export default class Captures extends Component<Props, {}> {
       const selectedClass = this.props.isTurn
         ? getSelectedClass(sel, pieceId, i)
         : ''
+      const isTurnClass = this.props.isTurn ? 'Piece-Turn' : ''
       const captureClass = `Capture-${pieceId}${count}${i + 1}`
-      const className = `Piece Piece-${pieceId} ${selectedClass} ${captureClass}`
+      const className = `Piece Piece-${pieceId} ${isTurnClass} ${selectedClass} ${captureClass}`
       return (
         <div
           key={`Cap-${this.props.isLeftSide}-${name}-${i}`}
           className={className}
+          onClick={() => {
+            if (this.props.isTurn)
+              this.props.click({
+                clicked: this.props.turn * pieceId /* TODO: なんとかする */,
+                row: -1,
+                column: -1,
+                i: i,
+              })
+          }}
         />
       )
     })
@@ -59,9 +73,9 @@ function getSelectedClass(
   index: number
 ): string {
   return selected &&
-    selected.row === -1 &&
-    selected.column === -1 &&
-    selected.piece === pieceId &&
+  selected.row === -1 &&
+  selected.column === -1 &&
+  Math.abs(selected.piece) === pieceId /* TODO: すげー嫌 */ &&
     selected.i === index
     ? 'Piece-Selected'
     : ''

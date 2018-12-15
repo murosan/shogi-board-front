@@ -1,4 +1,4 @@
-import { Piece } from '../../model/shogi/Piece'
+import { Piece, Gyoku0, Gyoku1 } from '../../model/shogi/Piece'
 
 /**
  * 持ち駒を1つ増やす
@@ -20,6 +20,8 @@ export function decreaseCaptures(cap: number[], p: Piece): number[] {
 
 function handle(cap: number[], p: Piece, f: (i: number) => number): number[] {
   if (p < 0) throw new Error('Piece ID of Captures must be positive value.')
+  if (p === Gyoku0 || p === Gyoku1 || p > 10)
+    throw new Error('Piece ID of Captures must not be Gyoku or over 10.')
 
   return cap.map((count, index) => {
     // 駒IDが一致しなければそのまま

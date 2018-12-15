@@ -28,14 +28,10 @@ export function move(p: MoveProps): Position {
   const updatedPos: Piece[][] = p.pos.pos.map((row: number[], r: number) =>
     row.map((piece: Piece, c: number) => {
       // 移動前の位置なら空マスに
-      if (p.source.row === r && p.source.column === c) {
-        return Empty
-      }
+      if (p.source.row === r && p.source.column === c) return Empty
 
       // 移動先の位置なら更新
-      if (p.dest.row === r && p.dest.column === c) {
-        return p.piece
-      }
+      if (p.dest.row === r && p.dest.column === c) return p.piece
 
       return piece
     })
@@ -49,14 +45,11 @@ export function move(p: MoveProps): Position {
 
     // 移動先が相手の駒なら持ち駒を増やす
     const d: Piece = p.pos.pos[p.dest.row][p.dest.column]
-    if (d * turn < 0) {
-      return increaseCaptures(cap, Math.abs(demote(d)))
-    }
+    if (d * turn < 0) return increaseCaptures(cap, Math.abs(demote(d)))
 
     // 移動元が持ち駒なら減らす
-    if (p.source.row === -1 && p.source.column === -1) {
-      return decreaseCaptures(cap, p.piece)
-    }
+    if (p.source.row === -1 && p.source.column === -1)
+      return decreaseCaptures(cap, Math.abs(p.piece))
 
     return cap.slice()
   }

@@ -8,6 +8,8 @@ import {
   Kaku0,
   Hisha0,
   Fu1,
+  Gyoku0,
+  To0,
 } from '../../model/shogi/Piece'
 
 const empty: number[] = [0, 0, 0, 0, 0, 0, 0]
@@ -97,5 +99,13 @@ describe('不正な値が渡されたらエラー', async () => {
   it('減らすと数がマイナスになる時もエラー', async () => {
     const r = /Captures must not contain negative value.$/
     expect(() => decreaseCaptures(empty, Fu0)).toThrowError(r)
+  })
+  it('玉や成駒はエラー', async () => {
+    const r = /Captures must not be Gyoku or over 10.$/
+    expect(() => increaseCaptures(empty, Gyoku0)).toThrowError(r)
+    expect(() => decreaseCaptures(empty, Gyoku0)).toThrowError(r)
+
+    expect(() => increaseCaptures(empty, To0)).toThrowError(r)
+    expect(() => decreaseCaptures(empty, To0)).toThrowError(r)
   })
 })

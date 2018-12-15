@@ -13,6 +13,7 @@ export interface Props {
   gs: GameState
 }
 
+// TODO: global state などへの移行を検討する
 export interface State {
   gs: GameState
 }
@@ -60,9 +61,7 @@ export default class App extends Component<Props, State> {
     }
 
     // 選択された駒がないとき、手番ではない方の駒or空白マスがクリックされたらなにもしない
-    if (!sel) {
-      return
-    }
+    if (!sel) return
 
     // Confirm オブジェクトがクリックされたら動かす(成or不成の処理)
     // Confirm が出てる時はバリデーション済みなはず
