@@ -1,6 +1,7 @@
 import Position from './Position'
 import Confirm from './Confirm'
 import Point from './Point'
+import ValidationInfo from './ValidationInfo'
 
 /**
  * 盤面が今どういう状態かを表す
@@ -26,4 +27,7 @@ export default interface GameState {
   // 成・不成 を選択する画面の状態
   // undefined なら選択画面ではない
   confirm: Confirm | undefined
+
+  // 駒を動かせる場所を入れておくもの
+  vi: ValidationInfo
 }

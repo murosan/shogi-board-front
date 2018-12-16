@@ -1,8 +1,8 @@
 import ValidationInfo from '../../model/shogi/ValidationInfo'
-import { init } from './validation-info'
+import { newValidationInfo } from './validation-info'
 
 it('ValidationInfo を初期化できる', async () => {
-  const vi: ValidationInfo = init()
+  const vi: ValidationInfo = newValidationInfo()
 
   expect(vi.turn.length).toEqual(9)
   expect(vi.turn.every(a => a.length === 9)).toBeTruthy()

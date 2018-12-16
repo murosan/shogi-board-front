@@ -4,9 +4,9 @@ import './index.scss'
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
 import GameState from './model/shogi/GameState'
-import { init } from './model/shogi/GameStateInit'
+import { newGameState } from './model/shogi/GameStateInit'
 
-const gs: GameState = init()
+const gs: GameState = newGameState()
 
 ReactDOM.render(<App gs={gs} />, document.getElementById('root'))
 
