@@ -1,8 +1,8 @@
+import { Piece, Uma0, Uma1 } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
-import { Uma0, Uma1, Piece } from '../../../model/shogi/Piece'
-import kaku from './kaku'
 import getFromNexts from '../utils/getFromNexts'
+import kaku from './kaku'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Uma0 || p.piece !== Uma1))

@@ -1,6 +1,6 @@
+import { newValidationInfo } from '../../lib/handler/validation-info'
 import GameState from './GameState'
 import { hirate } from './PositionInit'
-import { newValidationInfo } from '../../lib/handler/validation-info'
 
 /**
  * 平手の初期局面がセットされた GameState を返す

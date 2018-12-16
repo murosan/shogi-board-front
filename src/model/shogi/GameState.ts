@@ -1,6 +1,6 @@
-import Position from './Position'
 import Confirm from './Confirm'
 import Point from './Point'
+import Position from './Position'
 import ValidationInfo from './ValidationInfo'
 
 /**

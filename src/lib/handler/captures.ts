@@ -1,4 +1,4 @@
-import { Piece, Gyoku0, Gyoku1 } from '../../model/shogi/Piece'
+import { Gyoku0, Gyoku1, Piece } from '../../model/shogi/Piece'
 
 /**
  * 持ち駒を1つ増やす

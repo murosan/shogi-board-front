@@ -1,7 +1,7 @@
-import Point from '../../../model/shogi/Point'
 import { Hisha0, Hisha1, Piece } from '../../../model/shogi/Piece'
-import getEmpties from '../utils/getEmpties'
+import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
+import getEmpties from '../utils/getEmpties'
 import getRecursive from '../utils/getWithCallbacks'
 
 export default function(pos: Position, p: Point): Point[] {

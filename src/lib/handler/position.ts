@@ -1,8 +1,8 @@
+import { Empty, Piece } from '../../model/shogi/Piece'
 import Position from '../../model/shogi/Position'
-import { Piece, Empty } from '../../model/shogi/Piece'
 import { Turn } from '../../model/shogi/Turn'
+import { decreaseCaptures, increaseCaptures } from './captures'
 import { demote } from './piece'
-import { increaseCaptures, decreaseCaptures } from './captures'
 
 export interface MoveProps {
   // 駒を動かす前の Position

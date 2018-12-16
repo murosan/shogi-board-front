@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './Cell.scss'
-import Point from '../../model/shogi/Point'
-import { Piece } from '../../model/shogi/Piece'
 import { columnString, rowString } from '../../lib/strings'
 import { ClickFunc, ClickProps } from '../../model/events/ClickFunc'
+import { Piece } from '../../model/shogi/Piece'
+import Point from '../../model/shogi/Point'
+import './Cell.scss'
 
 export interface Props {
   row: number

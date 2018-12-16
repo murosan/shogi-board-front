@@ -1,7 +1,7 @@
+import { Gin0, Gin1, Piece } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
-import getEmpties from '../utils/getEmpties'
 import Position from '../../../model/shogi/Position'
-import { Gin0, Gin1, Piece, Empty } from '../../../model/shogi/Piece'
+import getEmpties from '../utils/getEmpties'
 import getFromNexts from '../utils/getFromNexts'
 
 export default function(pos: Position, p: Point): Point[] {

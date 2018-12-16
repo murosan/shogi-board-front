@@ -1,5 +1,5 @@
+import { Empty, Kei0, Kei1, Piece } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
-import { Kei0, Kei1, Piece, Empty } from '../../../model/shogi/Piece'
 import Position from '../../../model/shogi/Position'
 import getEmpties from '../utils/getEmpties'
 
@@ -16,7 +16,7 @@ export default function(pos: Position, p: Point): Point[] {
       <Piece>p.piece > 0 ? invalidRow1 + 1 : invalidRow1 - 1
     return getEmpties(
       pos.pos,
-      (r: number, c: number) => r !== invalidRow1 && r !== invalidRow2
+      (r: number, _: number) => r !== invalidRow1 && r !== invalidRow2
     )
   }
 

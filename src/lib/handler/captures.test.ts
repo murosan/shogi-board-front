@@ -1,16 +1,16 @@
-import { increaseCaptures, decreaseCaptures } from './captures'
 import {
   Fu0,
-  Kyou0,
-  Kei0,
-  Gin0,
-  Kin0,
-  Kaku0,
-  Hisha0,
   Fu1,
+  Gin0,
   Gyoku0,
+  Hisha0,
+  Kaku0,
+  Kei0,
+  Kin0,
+  Kyou0,
   To0,
 } from '../../model/shogi/Piece'
+import { decreaseCaptures, increaseCaptures } from './captures'
 
 const empty: number[] = [0, 0, 0, 0, 0, 0, 0]
 

@@ -1,9 +1,9 @@
+import { Gin0, Gin1, Kin0, Kin1 } from '../../../model/shogi/Piece'
+import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
+import { Gote } from '../../../model/shogi/Turn'
 import emptyPosition from '../../../testutils/emptyPosition'
 import gin from './gin'
-import { Gin0, Kin0, Kin1, Gin1 } from '../../../model/shogi/Piece'
-import Point from '../../../model/shogi/Point'
-import { Gote } from '../../../model/shogi/Turn'
 
 describe('銀の動き判定', async () => {
   it('周りに駒がなければ5箇所に移動できる(先手)', async () => {

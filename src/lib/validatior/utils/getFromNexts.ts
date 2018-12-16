@@ -1,4 +1,4 @@
-import { Piece, Empty } from '../../../model/shogi/Piece'
+import { Piece } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
 
 export default function(pos: Piece[][], nexts: number[][], p: Piece): Point[] {

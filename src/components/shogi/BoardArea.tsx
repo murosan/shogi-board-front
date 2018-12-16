@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './BoardArea.scss'
+import { ClickFunc } from '../../model/events/ClickFunc'
+import GameState from '../../model/shogi/GameState'
 import Board from './Board'
+import './BoardArea.scss'
 import LeftSide from './LeftSide'
 import RightSide from './RightSide'
-import GameState from '../../model/shogi/GameState'
-import { ClickFunc } from '../../model/events/ClickFunc'
 
 export interface Props {
   gs: GameState

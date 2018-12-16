@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './Board.scss'
-import Cell from './Cell'
+import { ClickFunc } from '../../model/events/ClickFunc'
 import GameState from '../../model/shogi/GameState'
 import { Piece } from '../../model/shogi/Piece'
-import { ClickFunc } from '../../model/events/ClickFunc'
+import './Board.scss'
+import Cell from './Cell'
 
 export interface Props {
   gs: GameState

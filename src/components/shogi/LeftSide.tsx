@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './LeftSide.scss'
-import Captures from './Captures'
+import { ClickFunc } from '../../model/events/ClickFunc'
 import Point from '../../model/shogi/Point'
 import { Turn } from '../../model/shogi/Turn'
-import { ClickFunc } from '../../model/events/ClickFunc'
+import Captures from './Captures'
+import './LeftSide.scss'
 
 export interface Props {
   click: ClickFunc

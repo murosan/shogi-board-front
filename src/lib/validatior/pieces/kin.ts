@@ -1,18 +1,18 @@
-import Point from '../../../model/shogi/Point'
-import Position from '../../../model/shogi/Position'
 import {
   Kin0,
   Kin1,
-  To0,
-  To1,
-  NariKyou0,
-  NariKyou1,
-  NariKei0,
-  NariKei1,
   NariGin0,
   NariGin1,
+  NariKei0,
+  NariKei1,
+  NariKyou0,
+  NariKyou1,
   Piece,
+  To0,
+  To1,
 } from '../../../model/shogi/Piece'
+import Point from '../../../model/shogi/Point'
+import Position from '../../../model/shogi/Position'
 import getEmpties from '../utils/getEmpties'
 import getFromNexts from '../utils/getFromNexts'
 

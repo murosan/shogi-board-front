@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
 import App from './components/App'
-import * as serviceWorker from './serviceWorker'
+import './index.scss'
+import setMovements from './lib/validatior/setMovements'
 import GameState from './model/shogi/GameState'
 import { newGameState } from './model/shogi/GameStateInit'
-import setMovements from './lib/validatior/setMovements'
+import * as serviceWorker from './serviceWorker'
 
 const gs: GameState = newGameState()
 setMovements(gs.vi, gs.pos)

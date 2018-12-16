@@ -1,23 +1,23 @@
-import Position from './Position'
 import {
   Empty,
   Fu0,
   Fu1,
-  Kyou0,
-  Kyou1,
-  Kei0,
-  Kei1,
   Gin0,
   Gin1,
-  Kin0,
-  Kin1,
-  Kaku0,
-  Kaku1,
-  Hisha0,
-  Hisha1,
   Gyoku0,
   Gyoku1,
+  Hisha0,
+  Hisha1,
+  Kaku0,
+  Kaku1,
+  Kei0,
+  Kei1,
+  Kin0,
+  Kin1,
+  Kyou0,
+  Kyou1,
 } from './Piece'
+import Position from './Position'
 import { Sente } from './Turn'
 
 /**

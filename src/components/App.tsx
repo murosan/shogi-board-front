@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
+import { move } from '../lib/handler/position'
+import { ClickProps } from '../model/events/ClickFunc'
+import Confirm from '../model/shogi/Confirm'
+import GameState from '../model/shogi/GameState'
+import { Piece } from '../model/shogi/Piece'
+import Point from '../model/shogi/Point'
+import { Turn } from '../model/shogi/Turn'
 import './App.scss'
 import BoardArea from './shogi/BoardArea'
-import GameState from '../model/shogi/GameState'
-import Confirm from '../model/shogi/Confirm'
-import { Piece } from '../model/shogi/Piece'
-import { Turn } from '../model/shogi/Turn'
-import { ClickProps } from '../model/events/ClickFunc'
-import { move } from '../lib/handler/position'
-import Point from '../model/shogi/Point'
 
 export interface Props {
   gs: GameState
