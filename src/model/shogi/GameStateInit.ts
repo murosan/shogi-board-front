@@ -2,7 +2,7 @@ import GameState from './GameState'
 import { hirate } from './PositionInit'
 
 /**
- * 初期局がセットされた GameState を返す
+ * 平手の初期局面がセットされた GameState を返す
  */
 export function init(): GameState {
   return {

@@ -2,6 +2,9 @@ import Position from './Position'
 import Confirm from './Confirm'
 import Point from './Point'
 
+/**
+ * 盤面が今どういう状態かを表す
+ */
 export default interface GameState {
   pos: Position
 
