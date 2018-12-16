@@ -1,7 +1,7 @@
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
 import { Fu0, Fu1, Piece, Empty } from '../../../model/shogi/Piece'
-import getEmpties from '../utils/get-empties'
+import getEmpties from '../utils/getEmpties'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Fu0 && p.piece !== Fu1))
@@ -33,18 +33,17 @@ export default function(pos: Position, p: Point): Point[] {
   }
 
   function onBoard(): Point[] {
-    // for safety
-    if (duplicates(p.column)) return []
-
     const nextRow: number = <Piece>p.piece > 0 ? p.row - 1 : p.row + 1
-    if (nextRow < 0 || nextRow > 8) return []
 
-    const target: Piece = pos.pos[nextRow][p.column]
+    // 盤外か味方の駒ならなし
+    if (
+      nextRow < 0 ||
+      nextRow > 8 ||
+      pos.pos[nextRow][p.column] * <Piece>p.piece > 0
+    )
+      return []
 
     // 空マスか、相手の駒ならOK
-    if (target === Empty || target * <Piece>p.piece < 0)
-      return [{ row: nextRow, column: p.column, piece: target }]
-
-    return []
+    return [{ row: nextRow, column: p.column }]
   }
 }

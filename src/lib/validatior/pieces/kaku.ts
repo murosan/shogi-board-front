@@ -1,8 +1,8 @@
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
 import { Kaku0, Kaku1, Piece } from '../../../model/shogi/Piece'
-import getEmpties from '../utils/get-empties'
-import getRecursive from '../utils/get-recursive'
+import getEmpties from '../utils/getEmpties'
+import getRecursive from '../utils/getWithCallbacks'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Kaku0 && p.piece !== Kaku1))
@@ -25,7 +25,14 @@ export default function(pos: Position, p: Point): Point[] {
     return callbacks.reduce(
       (acc: Point[], cb) =>
         acc.concat(
-          getRecursive(pos.pos, p.row, p.column, <Piece>p.piece, cb[0], cb[1])
+          getRecursive(
+            pos.pos,
+            cb[0](p.row),
+            cb[1](p.column),
+            <Piece>p.piece,
+            cb[0],
+            cb[1]
+          )
         ),
       []
     )

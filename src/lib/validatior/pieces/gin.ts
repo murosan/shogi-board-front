@@ -1,8 +1,8 @@
 import Point from '../../../model/shogi/Point'
-import getEmpties from '../utils/get-empties'
+import getEmpties from '../utils/getEmpties'
 import Position from '../../../model/shogi/Position'
 import { Gin0, Gin1, Piece, Empty } from '../../../model/shogi/Piece'
-import getFromNexts from '../utils/get-from-nexts'
+import getFromNexts from '../utils/getFromNexts'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Gin0 && p.piece !== Gin1))
@@ -17,7 +17,7 @@ export default function(pos: Position, p: Point): Point[] {
 
   function onBoard(): Point[] {
     const nexts: number[][] =
-      <Piece>p.piece < 0
+      <Piece>p.piece > 0
         ? [
             [p.row - 1, p.column - 1],
             [p.row - 1, p.column],

@@ -1,7 +1,7 @@
 import Point from '../../../model/shogi/Point'
 import { Kei0, Kei1, Piece, Empty } from '../../../model/shogi/Piece'
 import Position from '../../../model/shogi/Position'
-import getEmpties from '../utils/get-empties'
+import getEmpties from '../utils/getEmpties'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Kei0 && p.piece !== Kei1))
@@ -33,7 +33,7 @@ export default function(pos: Position, p: Point): Point[] {
 
       const target: Piece = pos.pos[nextRow][c]
       if (target === Empty || target * <Piece>p.piece < 0)
-        return [{ row: nextRow, column: c, piece: target }]
+        return [{ row: nextRow, column: c }]
       return []
     }
 

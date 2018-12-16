@@ -30,6 +30,7 @@ import {
   NariKei1,
   NariGin0,
   NariGin1,
+  Piece,
 } from '../../model/shogi/Piece'
 import fu from './pieces/fu'
 import kyou from './pieces/kyou'
@@ -41,31 +42,37 @@ import hisha from './pieces/hisha'
 import gyoku from './pieces/gyoku'
 import uma from './pieces/uma'
 import ryu from './pieces/ryu'
+import ValidationInfo from '../../model/shogi/ValidationInfo'
 
 /**
  * 全ての動かせる駒の Point 情報をセットする
- * @param i Point[][][] セットする対象
+ * @param vi ValidationInfo セットする対象
  * @param pos Position 局面。この局面にある全ての駒の動ける場所を調べる
  */
-export default function(i: Point[][][], pos: Position): void {
+export default function(vi: ValidationInfo, pos: Position): void {
   const setForEach = (targets: Point[], point: Point) =>
-    targets.forEach(
-      p => (i[p.row][p.column] = i[p.row][p.column].concat(point))
-    )
+    targets.forEach(p => {
+      const i: Point[][][] =
+        <Piece>point.piece * pos.turn > 0 ? vi.turn : vi.next
+      i[p.row][p.column] = i[p.row][p.column].concat(point)
+    })
 
   pos.pos.forEach((line, row) =>
     line.forEach((piece, column) => {
+      if (piece === Empty) return
       const point: Point = { row, column, piece }
       setForEach(getTargets(pos, point), point)
     })
   )
 
-  pos.cap0.forEach((_, i) => {
+  pos.cap0.forEach((count, i) => {
+    if (count === 0) return
     const point: Point = { row: -1, column: -1, piece: i + 1 }
     setForEach(getTargets(pos, point), point)
   })
 
-  pos.cap1.forEach((_, i) => {
+  pos.cap1.forEach((count, i) => {
+    if (count === 0) return
     const point: Point = { row: -1, column: -1, piece: -(i + 1) }
     setForEach(getTargets(pos, point), point)
   })

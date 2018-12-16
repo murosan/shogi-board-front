@@ -1,7 +1,7 @@
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
 import { Ryu0, Ryu1, Piece } from '../../../model/shogi/Piece'
-import getFromNexts from '../utils/get-from-nexts'
+import getFromNexts from '../utils/getFromNexts'
 import hisha from './hisha'
 
 export default function(pos: Position, p: Point): Point[] {

@@ -18,6 +18,7 @@ import {
   Gyoku0,
   Gyoku1,
 } from './Piece'
+import { Sente } from './Turn'
 
 /**
  * 初期局を返す
@@ -40,7 +41,7 @@ export function hirate(): Position {
     ],
     cap0: [0, 0, 0, 0, 0, 0, 0],
     cap1: [0, 0, 0, 0, 0, 0, 0],
-    turn: 1,
+    turn: Sente,
     moveCount: 0,
   }
 }

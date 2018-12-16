@@ -13,8 +13,8 @@ import {
   NariGin1,
   Piece,
 } from '../../../model/shogi/Piece'
-import getEmpties from '../utils/get-empties'
-import getFromNexts from '../utils/get-from-nexts'
+import getEmpties from '../utils/getEmpties'
+import getFromNexts from '../utils/getFromNexts'
 
 export default function(pos: Position, p: Point): Point[] {
   if (
@@ -43,7 +43,7 @@ export default function(pos: Position, p: Point): Point[] {
 
   function onBoard(): Point[] {
     const nexts: number[][] =
-      <Piece>p.piece < 0
+      <Piece>p.piece > 0
         ? [
             [p.row - 1, p.column - 1],
             [p.row - 1, p.column],
