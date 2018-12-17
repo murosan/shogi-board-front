@@ -2,7 +2,7 @@ import { Kyou0, Kyou1, Piece } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
 import getEmpties from '../utils/getEmpties'
-import getRecursive from '../utils/getWithCallbacks'
+import getWithCallbacks from '../utils/getWithCallbacks'
 
 export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Kyou0 && p.piece !== Kyou1))
@@ -20,7 +20,7 @@ export default function(pos: Position, p: Point): Point[] {
     const callback =
       <Piece>p.piece > 0 ? (i: number) => i - 1 : (i: number) => i + 1
 
-    return getRecursive(
+    return getWithCallbacks(
       pos.pos,
       callback(p.row),
       p.column,
