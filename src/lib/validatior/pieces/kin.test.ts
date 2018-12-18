@@ -50,8 +50,8 @@ describe('金の動き判定', async () => {
 
   it('味方の駒があるところには動けない(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.pos[4][4] = Kin1 // 55銀
-    pos.pos[3][4] = Gin1 // 45金
+    pos.pos[4][4] = Kin1 // 55
+    pos.pos[3][4] = Gin1 // 45
     const expected: Point[] = [
       { row: 4, column: 3 },
       { row: 4, column: 5 },
@@ -64,8 +64,8 @@ describe('金の動き判定', async () => {
 
   it('相手の駒があるところには動ける(先手)', async () => {
     const pos: Position = emptyPosition()
-    pos.pos[4][4] = Kin0 // 55銀
-    pos.pos[3][3] = Gin1 // 44金
+    pos.pos[4][4] = Kin0 // 55
+    pos.pos[3][3] = Gin1 // 44
     const expected: Point[] = [
       { row: 3, column: 3 },
       { row: 3, column: 4 },
@@ -79,8 +79,8 @@ describe('金の動き判定', async () => {
 
   it('相手の駒があるところには動ける(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.pos[4][4] = Kin1 // 55銀
-    pos.pos[3][3] = Gin0 // 44金
+    pos.pos[4][4] = Kin1 // 55
+    pos.pos[3][3] = Gin0 // 44
     const expected: Point[] = [
       { row: 3, column: 4 },
       { row: 4, column: 3 },

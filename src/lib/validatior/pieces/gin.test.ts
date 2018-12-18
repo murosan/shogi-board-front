@@ -1,10 +1,9 @@
-import { Gin0, Gin1, Kin0, Kin1, Fu0 } from '../../../model/shogi/Piece'
+import { newGameState } from '../../../model/shogi/GameStateInit'
+import { Fu0, Gin0, Gin1, Kin0, Kin1 } from '../../../model/shogi/Piece'
 import Point from '../../../model/shogi/Point'
 import Position from '../../../model/shogi/Position'
-import { Gote } from '../../../model/shogi/Turn'
 import emptyPosition from '../../../testutils/emptyPosition'
 import gin from './gin'
-import { newGameState } from '../../../model/shogi/GameStateInit'
 
 describe('銀の動き判定', async () => {
   it('周りに駒がなければ5箇所に移動できる(先手)', async () => {
@@ -22,7 +21,6 @@ describe('銀の動き判定', async () => {
 
   it('周りに駒がなければ5箇所に移動できる(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.turn = Gote
     pos.pos[4][4] = Gin1 // 55銀
     const expected: Point[] = [
       { row: 3, column: 3 },
@@ -49,7 +47,6 @@ describe('銀の動き判定', async () => {
 
   it('味方の駒があるところには動けない(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.turn = Gote
     pos.pos[4][4] = Gin1 // 55銀
     pos.pos[3][3] = Kin1 // 44金
     const expected: Point[] = [
@@ -77,7 +74,6 @@ describe('銀の動き判定', async () => {
 
   it('相手の駒があるところには動ける(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.turn = Gote
     pos.pos[4][4] = Gin1 // 55銀
     pos.pos[3][3] = Kin0 // 44金
     const expected: Point[] = [
@@ -108,7 +104,6 @@ describe('銀の動き判定', async () => {
 
   it('盤外には動けない(後手)', async () => {
     const pos: Position = emptyPosition()
-    pos.turn = Gote
     pos.pos[0][0] = Gin1 // 11銀
     pos.pos[8][0] = Gin1 // 19銀
     pos.pos[0][8] = Gin1 // 91銀
