@@ -34,12 +34,8 @@ export default function(pos: Position, p: Point): Point[] {
       'Called validation for kin(or promoted piece moves as same as kin), but piece id was not as expected.'
     )
 
-  if (p.row === -1 && p.column === -1) return capture()
+  if (p.row === -1 && p.column === -1) return getEmpties(pos.pos)
   return onBoard()
-
-  function capture(): Point[] {
-    return getEmpties(pos.pos)
-  }
 
   function onBoard(): Point[] {
     const nexts: number[][] =

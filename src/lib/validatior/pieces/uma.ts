@@ -8,7 +8,7 @@ export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Uma0 || p.piece !== Uma1))
     throw new Error('Called validation for uma, but piece id was not uma.')
 
-  if (p.row === -1 && p.column === -1)
+  if (p.row === -1 || p.column === -1)
     throw new Error('Uma must not be captured')
 
   const nexts = [

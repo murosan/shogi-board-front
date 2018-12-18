@@ -18,9 +18,6 @@ export default function(pos: Position, p: Point): Point[] {
     }
   }
 
-  // 二歩チェック。二歩なら true, 二歩ではないとき false
-  const duplicates = (column: number) => columnsOfContainingFu.includes(column)
-
   if (p.row === -1 && p.column === -1) return capture()
   return onBoard()
 
@@ -28,7 +25,8 @@ export default function(pos: Position, p: Point): Point[] {
     const invalidRow: number = <Piece>p.piece > 0 ? 0 : 8
     return getEmpties(
       pos.pos,
-      (r: number, c: number) => r !== invalidRow && !duplicates(c)
+      (r: number, c: number) =>
+        r !== invalidRow && !columnsOfContainingFu.includes(c)
     )
   }
 

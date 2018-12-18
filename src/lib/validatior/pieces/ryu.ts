@@ -8,7 +8,7 @@ export default function(pos: Position, p: Point): Point[] {
   if (!p.piece || (p.piece !== Ryu0 && p.piece !== Ryu1))
     throw new Error('Called validation for ryu, but piece id was not ryu.')
 
-  if (p.row === -1 && p.column === -1)
+  if (p.row === -1 || p.column === -1)
     throw new Error('Ryu must not be captured')
 
   const nexts = [

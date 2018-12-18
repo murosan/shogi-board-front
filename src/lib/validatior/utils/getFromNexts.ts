@@ -7,13 +7,15 @@ export default function(pos: Piece[][], nexts: number[][], p: Piece): Point[] {
   for (let i = 0; i < nexts.length; i++) {
     const row = nexts[i][0]
     const column = nexts[i][1]
-    if (inRange(row) && inRange(column) && pos[row][column] * p <= 0)
+    if (
+      row >= 0 &&
+      row <= 8 &&
+      column >= 0 &&
+      column <= 8 &&
+      pos[row][column] * p <= 0
+    )
       points.push({ row, column })
   }
 
   return points
-}
-
-function inRange(n: number): boolean {
-  return 0 <= n && n <= 8
 }

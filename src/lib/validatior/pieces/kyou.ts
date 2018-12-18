@@ -17,16 +17,19 @@ export default function(pos: Position, p: Point): Point[] {
   }
 
   function onBoard(): Point[] {
-    const callback =
-      <Piece>p.piece > 0 ? (i: number) => i - 1 : (i: number) => i + 1
+    const diff = <Piece>p.piece > 0 ? -1 : 1
+    const points: Point[] = []
 
-    return getWithCallbacks(
+    getWithCallbacks(
       pos.pos,
-      callback(p.row),
+      p.row + diff,
       p.column,
       <Piece>p.piece,
-      callback,
-      (r: number) => r
+      points,
+      diff,
+      0
     )
+
+    return points
   }
 }
